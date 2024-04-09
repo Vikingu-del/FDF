@@ -1,0 +1,6 @@
+[submodule "lib/ft_printf"]
+	path = lib/ft_printf
+	url = git@github.com:Vikingu-del/ft_printf.git
+[submodule "lib/get_next_line"]
+	path = lib/get_next_line
+	url = git@github.com:Vikingu-del/get_next_line.git
