@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:23:12 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 21:15:12 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:52:20 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	main(int argv, char **argc)
 	if (argv != 2)
 		exit_with_error(ERR_ARGS);
 	init_data(&data, argc[1]);
-	mlx_hook(data.vars.win, 2, 0, key_press, &data);
-	mlx_hook(data.vars.win, 3, 0, key_release, &data);
-	mlx_hook(data.vars.win, 4, 0, mouse_press, &data);
-	mlx_hook(data.vars.win, 5, 0, mouse_release, &data);
-	mlx_hook(data.vars.win, 6, 0, mouse_move, &data);
-	mlx_hook(data.vars.win, 17, 0, close_program, &data);
+	mlx_hook(data.vars.win, 2, 1L<<0, key_press, &data);
+	mlx_hook(data.vars.win, 3, 1L<<1, key_release, &data);
+	mlx_hook(data.vars.win, 4, 1L<<2, mouse_press, &data);
+	mlx_hook(data.vars.win, 5, 1L<<3, mouse_release, &data);
+	mlx_hook(data.vars.win, 6, 1L<<6, mouse_move, &data);
+	mlx_hook(data.vars.win, 17, 1L<<17, close_program, &data);
 	mlx_loop(data.vars.mlx);
 	free (data.map.points);
 	free (data.map.content);
