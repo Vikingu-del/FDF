@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:48:46 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:33:58 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:16:32 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include <stdio.h>
+# include <stdbool.h>
 # include "defines.h"
 # include "control_keys.h"
 # include "control_mouse.h"
@@ -33,7 +35,6 @@
 # include <stdlib.h>
 # include <strings.h>
 # include <fcntl.h>
-# include <stdio.h>
 # ifdef __APPLE__
 #  include "../lib/mlx_mac/mlx.h"
 #  include "keycodes_mac.h"

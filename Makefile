@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+         #
+#    By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 15:45:00 by eseferi           #+#    #+#              #
-#    Updated: 2024/04/09 18:07:05 by eseferi          ###   ########.fr        #
+#    Updated: 2024/04/09 21:20:47 by eseferi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIB				:= lib/
 PRINTF_DIR		:= $(LIB)ft_printf/
 PRINTF			:= $(PRINTF_DIR)libftprintf.a
 
+UNAME_S := $(shell uname -s)
 # macOS
 ifeq ($(UNAME_S),Darwin)
 MLX_DIR			:= $(LIB)mlx_mac/

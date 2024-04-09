@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:11:34 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:39:36 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:15:17 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void	load_color(int max, int min, t_point *point, t_palette colors)
 		point->color = point->hex_color;
 		return ;
 	}
-	if (point->coords[Z] == max)
+	if (point->cords[Z] == max)
 		point->color = colors.topcolor;
-	else if (point->coords[Z] == 0)
+	else if (point->cords[Z] == 0)
 		point->color = colors.groundcolor;
-	else if (point->coords[Z] == min && min != 0)
+	else if (point->cords[Z] == min && min != 0)
 		point->color = colors.bottomcolor;
-	else if (point->coords[Z] > 0)
+	else if (point->cords[Z] > 0)
 		point->color = gradient(colors.groundcolor, colors.topcolor, \
-		max, point->coords[Z]);
+		max, point->cords[Z]);
 	else
 		point->color = gradient(colors.bottomcolor, colors.groundcolor, \
-		-min, - (min - point->coords[Z]));
+		-min, - (min - point->cords[Z]));
 	point->paint = 1;
 }
 
@@ -90,9 +90,9 @@ void	init_map(t_map *map, int clean_state)
 	if (clean_state)
 	{
 		map->len = 0;
-		map->limits.coords[X] = 0;
-		map->limits.coords[Y] = 0;
-		map->limits.coords[Z] = 0;
+		map->limits.cords[X] = 0;
+		map->limits.cords[Y] = 0;
+		map->limits.cords[Z] = 0;
 		map->zmin = 0;
 	}
 	map->z_scale = 1;
@@ -104,9 +104,9 @@ void	init_map(t_map *map, int clean_state)
 	map->sphere = 0;
 	map->stars = 0;
 	map->shadows = 1;
-	map->source.coords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
-	map->source.coords[Y] = WINY / 2;
-	map->source.coords[Z] = 0;
+	map->src.cords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+	map->src.cords[Y] = WINY / 2;
+	map->src.cords[Z] = 0;
 	map->ang[X] = 0;
 	map->ang[Y] = 0;
 	map->ang[Z] = 0;

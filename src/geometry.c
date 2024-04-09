@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:08:48 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:39:08 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:14:45 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	traslate(t_point *points, t_point move, int len)
 	i = 0;
 	while (i < len)
 	{
-		points[i].coords[X] = points[i].coords[X] + move.coords[X];
-		points[i].coords[Y] = points[i].coords[Y] + move.coords[Y];
-		points[i].coords[Z] = points[i].coords[Z] + move.coords[Z];
+		points[i].cords[X] = points[i].cords[X] + move.cords[X];
+		points[i].cords[Y] = points[i].cords[Y] + move.cords[Y];
+		points[i].cords[Z] = points[i].cords[Z] + move.cords[Z];
 		i++;
 	}
 }
@@ -41,9 +41,9 @@ void	scale_map(t_point *points, int scale, int len)
 	i = 0;
 	while (i < len)
 	{
-		points[i].coords[X] = points[i].coords[X] * scale;
-		points[i].coords[Y] = points[i].coords[Y] * scale;
-		points[i].coords[Z] = points[i].coords[Z] * scale;
+		points[i].cords[X] = points[i].cords[X] * scale;
+		points[i].cords[Y] = points[i].cords[Y] * scale;
+		points[i].cords[Z] = points[i].cords[Z] * scale;
 		i++;
 	}
 }
@@ -59,8 +59,8 @@ void	isometric(t_map *map)
 	map->ang[Y] = 330;
 	map->ang[Z] = 30;
 	map->curve_range = 0;
-	map->source.coords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
-	map->source.coords[Y] = WINY / 2;
+	map->src.cords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+	map->src.cords[Y] = WINY / 2;
 }
 
 /*
@@ -74,8 +74,8 @@ void	parallel(t_map *map)
 	map->ang[Y] = 0;
 	map->ang[Z] = 0;
 	map->curve_range = 0;
-	map->source.coords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
-	map->source.coords[Y] = WINY / 2;
+	map->src.cords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+	map->src.cords[Y] = WINY / 2;
 }
 
 /*
@@ -94,9 +94,9 @@ void	curving(t_point *points, int len, float curve_range)
 	i = 0;
 	while (i < len)
 	{
-		x_squared = pow(points[i].coords[X], 2);
-		y_squared = pow(points[i].coords[Y], 2);
-		points[i].coords[Z] -= curve_range * (x_squared + y_squared);
+		x_squared = pow(points[i].cords[X], 2);
+		y_squared = pow(points[i].cords[Y], 2);
+		points[i].cords[Z] -= curve_range * (x_squared + y_squared);
 		i++;
 	}
 }

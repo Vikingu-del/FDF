@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_mouse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:06:48 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:36:48 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:14:33 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	mouse_move(int x, int y, void *param)
 		return (0);
 	if (data->keys.b_mouse_l)
 	{
-		angle(&data->map.ang[X], (int)data->keys.last_click_l.coords[Y] - y);
-		angle(&data->map.ang[Y], (int)data->keys.last_click_l.coords[X] - x);
-		data->keys.last_click_l.coords[X] = x;
-		data->keys.last_click_l.coords[Y] = y;
+		angle(&data->map.ang[X], (int)data->keys.l_click.cords[Y] - y);
+		angle(&data->map.ang[Y], (int)data->keys.l_click.cords[X] - x);
+		data->keys.l_click.cords[X] = x;
+		data->keys.l_click.cords[Y] = y;
 		draw_map(data, FREE);
 	}
 	if (data->keys.b_mouse_r)
 	{
-		data->map.source.coords[X] -= ((int)data->keys.last_click_r.coords[X] - x);
-		data->map.source.coords[Y] -= ((int)data->keys.last_click_r.coords[Y] - y);
-		data->map.source.coords[Z] = 0;
-		data->keys.last_click_r.coords[X] = x;
-		data->keys.last_click_r.coords[Y] = y;
+		data->map.src.cords[X] -= ((int)data->keys.r_click.cords[X] - x);
+		data->map.src.cords[Y] -= ((int)data->keys.r_click.cords[Y] - y);
+		data->map.src.cords[Z] = 0;
+		data->keys.r_click.cords[X] = x;
+		data->keys.r_click.cords[Y] = y;
 		draw_map(data, FREE);
 	}
 	return (0);
@@ -73,14 +73,14 @@ int	mouse_press(int button, int x, int y, void *param)
 	if (button == 1)
 	{
 		data->keys.b_mouse_l = 1;
-		data->keys.last_click_l.coords[X] = x;
-		data->keys.last_click_l.coords[Y] = y;
+		data->keys.l_click.cords[X] = x;
+		data->keys.l_click.cords[Y] = y;
 	}
 	if (button == 2)
 	{
 		data->keys.b_mouse_r = 1;
-		data->keys.last_click_r.coords[X] = x;
-		data->keys.last_click_r.coords[Y] = y;
+		data->keys.r_click.cords[X] = x;
+		data->keys.r_click.cords[Y] = y;
 	}	
 	if (button == 5)
 	{

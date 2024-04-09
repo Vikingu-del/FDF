@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:33:28 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 18:10:19 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:12:07 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void	apply_color_scheme(t_map *map);
 int		close_program(void *param);
 void	exit_with_error(char *s);
 void	control_colorscheme(int key, t_map *map);
-
 #endif

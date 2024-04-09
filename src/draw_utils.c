@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:07:49 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:38:19 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:14:40 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	my_putpixel(t_data *data, t_point pixel)
 	int	alpha;
 
 	alpha = 0;
-	if (pixel.coords[X] < MENU_WIDTH)
+	if (pixel.cords[X] < MENU_WIDTH)
 		alpha = -10;
-	if (pixel.coords[X] >= WINX || pixel.coords[Y] >= WINY || \
-		pixel.coords[X] < 0 || pixel.coords[Y] < 0)
+	if (pixel.cords[X] >= WINX || pixel.cords[Y] >= WINY || \
+		pixel.cords[X] < 0 || pixel.cords[Y] < 0)
 		return (-1);
-	mypixel = ((int)pixel.coords[Y] * WINX * 4) + ((int)pixel.coords[X] * 4);
+	mypixel = ((int)pixel.cords[Y] * WINX * 4) + ((int)pixel.cords[X] * 4);
 	if (data->picture.bitxpixel != 32)
 		pixel.color = mlx_get_color_value(data->vars.mlx, pixel.color);
 	set_color(&data->picture.buffer[mypixel], \
@@ -77,29 +77,29 @@ int	get_color(t_data *data, int color)
 
 void	generate_background(t_data *data, int backcolor, int menucolor)
 {
-	int	coords[2];
+	int	cords[2];
 	int	pixel;
 	int	color;
 
 	backcolor = get_color(data, backcolor);
 	menucolor = get_color(data, menucolor);
-	coords[X] = 0;
-	coords[Y] = 0;
-	while (coords[Y] < WINY)
+	cords[X] = 0;
+	cords[Y] = 0;
+	while (cords[Y] < WINY)
 	{
-		while (coords[X] < WINX)
+		while (cords[X] < WINX)
 		{
-			if (coords[X] < MENU_WIDTH)
+			if (cords[X] < MENU_WIDTH)
 				color = menucolor;
 			else
 				color = backcolor;
-			pixel = (coords[Y] * data->picture.lines) + (coords[X] * 4);
+			pixel = (cords[Y] * data->picture.lines) + (cords[X] * 4);
 			set_color(&data->picture.buffer[pixel], \
 						data->picture.endian, color, 1);
-			coords[X]++;
+			cords[X]++;
 		}
-		coords[Y]++;
-		coords[X] = 0;
+		cords[Y]++;
+		cords[X] = 0;
 	}
 }
 
@@ -112,18 +112,18 @@ void	generate_stars(t_data *data)
 
 	if (data->map.sphere == 0)
 		return ;
-	lim_x[0] = data->map.source.coords[X] - (data->map.radius * data->map.scale);
-	lim_x[1] = data->map.source.coords[X] + (data->map.radius * data->map.scale);
-	lim_y[0] = data->map.source.coords[Y] - (data->map.radius * data->map.scale);
-	lim_y[1] = data->map.source.coords[Y] + (data->map.radius * data->map.scale);
+	lim_x[0] = data->map.src.cords[X] - (data->map.radius * data->map.scale);
+	lim_x[1] = data->map.src.cords[X] + (data->map.radius * data->map.scale);
+	lim_y[0] = data->map.src.cords[Y] - (data->map.radius * data->map.scale);
+	lim_y[1] = data->map.src.cords[Y] + (data->map.radius * data->map.scale);
 	i = 0;
 	while (i < 200)
 	{
-		star.coords[X] = rand() % WINX;
-		star.coords[Y] = rand() % WINY;
+		star.cords[X] = rand() % WINX;
+		star.cords[Y] = rand() % WINY;
 		star.color = GRAY;
-		if ((star.coords[X] < lim_x[0] || star.coords[X] > lim_x[1]) \
-		|| ((star.coords[Y]) < lim_y[0] || star.coords[Y] > lim_y[1]))
+		if ((star.cords[X] < lim_x[0] || star.cords[X] > lim_x[1]) \
+		|| ((star.cords[Y]) < lim_y[0] || star.cords[Y] > lim_y[1]))
 			draw_dot(data, star, 1);
 		i++;
 	}

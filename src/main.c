@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 17:20:48 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:39:20 by eseferi          ###   ########.fr       */
+/*   Created: 2023/10/05 15:23:12 by eseferi           #+#    #+#             */
+/*   Updated: 2024/04/09 21:15:12 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_data(t_data *data, char *file)
 {
 	load_map(&data->map, file);
-	data->map.ratio = data->map.limits.coords[Z] / data->map.limits.coords[X];
+	data->map.ratio = data->map.limits.cords[Z] / data->map.limits.cords[X];
 	if (data->map.ratio > 0.5)
 		data->map.z_scale = data->map.ratio * 30;
 	data->keys.b_keyctrl = 0;

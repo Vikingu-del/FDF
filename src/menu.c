@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:12:01 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 20:13:03 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:15:23 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ static void	draw_mapinfo(t_data *data)
 	print_nbr(data, MENU_TAB + 80, line, data->map.len);
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "Xmax:");
-	print_nbr(data, MENU_TAB + 80, line, data->map.limits.coords[X]);
+	print_nbr(data, MENU_TAB + 80, line, data->map.limits.cords[X]);
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "Ymax:");
-	print_nbr(data, MENU_TAB + 80, line, data->map.limits.coords[Y]);
+	print_nbr(data, MENU_TAB + 80, line, data->map.limits.cords[Y]);
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "Zmax:");
-	print_nbr(data, MENU_TAB + 80, line, data->map.limits.coords[Z]);
+	print_nbr(data, MENU_TAB + 80, line, data->map.limits.cords[Z]);
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "Zmin:");
 	print_nbr(data, MENU_TAB + 80, line, data->map.zmin);
@@ -96,9 +96,6 @@ static void	draw_info(t_data *data)
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "Reenders:");
 	print_nbr(data, MENU_TAB + 100, line, data->map.renders);
-	line += LINE_SIZE;
-	print_str(data, MENU_TAB, line, "Performance(ms):");
-	print_nbr(data, MENU_TAB + 170, line, data->map.performance * 1000);
 	line += LINE_SIZE;
 	print_str(data, MENU_TAB, line, "X, Y, Z: [   ] [   ] [   ]");
 	print_nbr(data, MENU_TAB + 100, line, data->map.ang[X]);

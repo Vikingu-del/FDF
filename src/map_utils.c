@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:11:10 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:43:52 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:15:15 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	wiring(t_data *data, t_point *wire)
 	i = 0;
 	while (i < data->map.len)
 	{
-		wire_line (&wire[i], data, density, i / data->map.limits.coords[X]);
-		i = i + data->map.limits.coords[X] * density;
+		wire_line (&wire[i], data, density, i / data->map.limits.cords[X]);
+		i = i + data->map.limits.cords[X] * density;
 	}
 }
 
@@ -43,16 +43,16 @@ void	wire_line(t_point *point, t_data *data, int density, int line)
 	int	y_end;
 
 	i = 0;
-	while (i < (int)data->map.limits.coords[X])
+	while (i < (int)data->map.limits.cords[X])
 	{
 		x_end = i + density;
-		if (x_end >= (int)data->map.limits.coords[X])
-			x_end = (int)data->map.limits.coords[X] - 1;
-		y_end = i + (int)data->map.limits.coords[X] * density;
+		if (x_end >= (int)data->map.limits.cords[X])
+			x_end = (int)data->map.limits.cords[X] - 1;
+		y_end = i + (int)data->map.limits.cords[X] * density;
 		if (point[i].paint)
 		{
 			draw_line(data, point[i], point[x_end]);
-			if (line + density < (int)data->map.limits.coords[Y])
+			if (line + density < (int)data->map.limits.cords[Y])
 				draw_line(data, point[i], point[y_end]);
 		}
 		i += density;
@@ -70,7 +70,7 @@ void	apply_color_scheme(t_map *map)
 	i = 0;
 	while (i < map->len)
 	{
-		load_color((int)map->limits.coords[Z], map->zmin, \
+		load_color((int)map->limits.cords[Z], map->zmin, \
 		&map->points[i], map->colors);
 		i++;
 	}
@@ -93,12 +93,9 @@ void	doting(t_data *data, t_point *projection)
 	}
 }
 
-/* 
- * This function iterate through all z coords and scales them to fit the screen
- * in a way that the highest point of the map is at the top of the screen and the
- * lowest point is at the bottom.
-*/
-
+// This function iterate through all z coordinates and scales them to fit the 
+// screen in a way that the highest point of the map is at the top of the 
+// screen and the lowest point is at the bottom.
 void	z_scaling(t_point *projected, float z_scale, int map_size)
 {
 	int	point;
@@ -106,7 +103,7 @@ void	z_scaling(t_point *projected, float z_scale, int map_size)
 	point = 0;
 	while (point < map_size)
 	{
-		projected[point].coords[Z] = projected[point].coords[Z] / z_scale;
+		projected[point].cords[Z] = projected[point].cords[Z] / z_scale;
 		point++;
 	}
 }

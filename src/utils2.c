@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:12:49 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 20:17:31 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:15:33 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 /* 
 *	This function copy len points of the array from src to projection
 */
@@ -33,9 +34,9 @@ void	copy_map_points(t_point *map_points, t_point *projection, int len)
 
 int	valid_pixel(t_point pixel)
 {
-	if (pixel.coords[X] < 0 || pixel.coords[X] > WINX)
+	if (pixel.cords[X] < 0 || pixel.cords[X] > WINX)
 		return (0);
-	if (pixel.coords[Y] < 0 || pixel.coords[Y] > WINY)
+	if (pixel.cords[Y] < 0 || pixel.cords[Y] > WINY)
 		return (0);
 	return (1);
 }

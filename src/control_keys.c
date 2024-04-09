@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_keys.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:55:55 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:36:18 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:14:15 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	control_esc_r_c_p(int key, t_data *data)
 	{
 		init_map(&data->map, 0);
 		data->map.scale = \
-		data->map.limits.coords[Z] / data->map.limits.coords[X];
+		data->map.limits.cords[Z] / data->map.limits.cords[X];
 		if (data->map.scale > 0.5)
 			data->map.z_scale = data->map.scale * 30;
 		apply_color_scheme(&data->map);
@@ -89,8 +89,8 @@ void	control_esc_r_c_p(int key, t_data *data)
 	}	
 	if (key == KEY_C)
 	{
-		data->map.source.coords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
-		data->map.source.coords[Y] = WINY / 2;
+		data->map.src.cords[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+		data->map.src.cords[Y] = WINY / 2;
 	}
 	if (key == KEY_P)
 	{

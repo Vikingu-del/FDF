@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:39:54 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 19:36:01 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/09 21:12:11 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define DEFINES_H
 
 # include "fdf.h"
-# include <stdbool.h>
 
 # define WINX 1920	
 # define WINY 1080
@@ -55,71 +54,71 @@
 # define FREE				0
 
 // A structure to manipulate the points.
-typedef struct	s_point {
-	float	coords[3]; // coordinatess of the point
-	int		color; // color of the point
-	int		hex_color; // hexadecimal color of the point
-	bool	paint; // boolean to check if the point has been painted
-	float	polar[2]; // the distance from the origin and the angle from the x axis to the point in radians (0 to 2pi)
+typedef struct s_point {
+	float	cords[3];
+	int		color;
+	int		hex_color;
+	bool	paint;
+	float	polar[2];
 }	t_point;
 
 // A structure to manipulate the colors.
 typedef struct m_palette {
-	int	topcolor;	// top color of a point
-	int	groundcolor; // ground color of a point
-	int	bottomcolor; // bottom color of a point
-	int	backcolor; // background color of a point
-	int	menucolor; // menu color of a point
+	int	topcolor;
+	int	groundcolor;
+	int	bottomcolor;
+	int	backcolor;
+	int	menucolor;
 }	t_palette;
 
 // A structure to translate the picture to bitmap format.
 typedef struct s_picture {
-	void	*img; // image pointer to manipulate the image functions and variables
-	char	*buffer;  // memory address of every pixel in the image
-	int		bitxpixel; // the number of bits used to represent a color pixel in the image (32 bits)
-	int		lines; // the number of lines in the image
-	int		endian; // the endian of the image (little endian)
+	void	*img;
+	char	*buffer;
+	int		bitxpixel;
+	int		lines;
+	int		endian;
 }	t_picture;
 
 // A structure to manipulate the variables.
 typedef struct s_vars {
-	void	*mlx; // mlx pointer to manipulate the mlx functions and variables
-	void	*win; // windows pointer to manipulate the windows functions and variables
+	void	*mlx;
+	void	*win;
 }	t_vars;
 
 // A structure to manipulate the keys.
 typedef struct s_keys {
-	bool			b_mouse_l; // boolean to check if the left mouse button is pressed
-	bool			b_mouse_r; // boolean to check if the right mouse button is pressed
-	bool			b_keyctrl; // boolean to check if the ctrl key is pressed
-	t_point			last_click_l; // informations of the last click of the left mouse button
-	t_point			last_click_r; // informations of the last click of the right mouse button
+	bool			b_mouse_l;
+	bool			b_mouse_r;
+	bool			b_keyctrl;
+	t_point			l_click;
+	t_point			r_click; 
 }	t_keys;
 
 // A structure to manipulate the map.
 typedef struct m_map {
-	t_point			*points; // an array with points of the map
-	t_point			limits; // limits of the map
-	t_point			source; // source of the map
-	t_palette		colors; // colors of the map
-	char			*content; // map file
-	char			**lines; // lines of the map
-	int				zmin; // minimum zet value
-	float			ang[3]; // representing the rotation angles
-	float			z_scale; // scales the z coordinates of each point in the map when rendering the map
-	float			scale; // scale factor for the map
-	int				len; // size of the map
-	float			curve_range; // curving range of the map
-	int				renders; // number of times the map has been rendered
-	bool			wires; // boolean to draw lines
-	bool			dots; // boolean to draw dots
-	bool			pluslines; // boolean to draw plus lines
-	bool			sphere; // boolean to spherize the map
-	bool			stars; // boolean to draw stars
-	bool			shadows; // boolean to draw shadows
-	double			performance; // performance of the map
-	float			ratio; // ratio of the map zmax / number of points
-	float			radius; // radius of the map
+	t_point			*points;
+	t_point			limits;
+	t_point			src;
+	t_palette		colors;
+	char			*content;
+	char			**lines;
+	int				zmin;
+	float			ang[3];
+	float			z_scale;
+	float			scale;
+	int				len;
+	float			curve_range;
+	int				renders;
+	bool			wires;
+	bool			dots;
+	bool			pluslines;
+	bool			sphere;
+	bool			stars;
+	bool			shadows;
+	double			performance;
+	float			ratio;
+	float			radius;
 }	t_map;
 
 // All data in one structure.
