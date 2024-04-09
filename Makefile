@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+         #
+#    By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 15:45:00 by eseferi           #+#    #+#              #
-#    Updated: 2024/04/09 21:20:47 by eseferi          ###   ########.fr        #
+#    Updated: 2024/04/09 21:36:15 by eseferi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LDFLAGS			:= -L$(MLX_DIR) -L /usr/X11/lib -lmlx -framework OpenGL -framework App
 else
 MLX_DIR			:= $(LIB)mlx_linux/
 MLX_FILE		:= $(MLX_DIR)libmlx.a
-LDFLAGS			:= -L$(MLX_DIR) -L /usr/lib/x86_64-linux-gnu/ -lX11 -lXext -lm -lbsd -lmlx
+LDFLAGS			:= -L$(MLX_DIR) -L /usr/lib/x86_64-linux-gnu/ -lmlx -lXext -lX11 -lm -lbsd
 endif
 
 LIBFT_DIR		:= $(LIB)ft_printf/$(LIB)libft/
