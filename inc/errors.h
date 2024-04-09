@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/26 19:32:36 by eseferi           #+#    #+#             */
+/*   Updated: 2024/04/09 18:11:27 by eseferi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ERRORS_H
+# define ERRORS_H
+
+# include "fdf.h"
+
+# define ERR_ARGS		"❌Incorrect number of arguments, expected 1"
+# define ERR_OPEN		"❌Error opening the file"
+# define ERR_READ		"❌Error reading the file"
+# define ERR_SPLIT		"❌Error splitting the line"
+# define ERR_LINE		"\n❌Error: nº of elements is different for each line"
+# define ERR_EMPTY		"❌Error: the file is empty or wrongly formatted"
+# define ERR_MEM		"❌Memory error"
+# define ERR_MAP		"❌Map Error"
+
+void	exit_with_error(char *s);
+#endif
