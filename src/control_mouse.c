@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_mouse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eseferi <eseferi@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: eseferi <eseferi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:06:48 by eseferi           #+#    #+#             */
-/*   Updated: 2024/04/09 21:14:33 by eseferi          ###   ########.fr       */
+/*   Updated: 2024/04/10 13:19:03 by eseferi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ int	mouse_release(int button, int x, int y, void *param)
 	data = (t_data *)param;
 	if (button == 1)
 		data->keys.b_mouse_l = 0;
-	if (button == 2)
-		data->keys.b_mouse_r = 0;
+	#ifdef __APPLE__
+    if (button == 2)
+	#else
+		if (button == 3)
+	#endif
+			data->keys.b_mouse_r = 0;
 	return (0);
 }
 
@@ -76,12 +80,16 @@ int	mouse_press(int button, int x, int y, void *param)
 		data->keys.l_click.cords[X] = x;
 		data->keys.l_click.cords[Y] = y;
 	}
-	if (button == 2)
-	{
-		data->keys.b_mouse_r = 1;
-		data->keys.r_click.cords[X] = x;
-		data->keys.r_click.cords[Y] = y;
-	}	
+	#ifdef __APPLE__
+    if (button == 2)
+	#else
+		if (button == 3)
+	#endif
+		{
+			data->keys.b_mouse_r = 1;
+			data->keys.r_click.cords[X] = x;
+			data->keys.r_click.cords[Y] = y;
+		}
 	if (button == 5)
 	{
 		if (data->map.scale > 2)
