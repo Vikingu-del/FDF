@@ -42,6 +42,7 @@ mlx (MiniLibX) is a simple X Windows graphic library created at 42 school. It pr
 	Include a set of example maps to showcase the capabilities of the program and provide users with a starting point for exploration.
 14. Integration with External Libraries
 	Integrate with external libraries or APIs to extend functionality, in this case mlx library for mac and linux.
+15. For more check the [subject](subject.pdf)
 
 ### Dependencies
 
@@ -109,6 +110,25 @@ To get started with FDF, follow these steps:
 
 10. Removing/Rendering Dots</br>
 	Toggle dot rendering using the D key.
+
+
+### Examples
+
+1. Spheric Projection
+
+![march](photos/March.png)
+
+2. Izometric Projection
+
+![42](photos/Izometring projection.png)
+
+3. 2D projection
+
+![2d](photos/twoD.png)
+
+4. Parallel projection
+
+![Parallel](photos/parallel.png)
 
 
 
